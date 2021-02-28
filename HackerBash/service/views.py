@@ -73,9 +73,11 @@ def user_profile(request):
                 return redirect('service-profile')
         else:
             u_form = UserUpdateForm(instance=request.user)
+        products = Products.objects.filter(product_distributer=request.user.id)
         context = {
             'u_form': u_form,
-            'serviceProvider': request.user
+            'serviceProvider': request.user,
+            'products':products
         }
         return render(request, 'service/serviceprofile.html',context)
     else:

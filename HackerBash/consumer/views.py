@@ -57,12 +57,8 @@ def login_request(request):
 
 
 def productView(request,id):
-	if request.user.is_consumer:
 		product = Products.objects.filter(id=id)
 		return render(request, 'consumer/product_view.html',{'product':product[0]})
-	else:
-		messages.error(request,"Does Not Belong To Consumer")
-		return redirect('consumer-login')
 
 
 @login_required

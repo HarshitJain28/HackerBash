@@ -177,42 +177,21 @@ body {
 
 <div class="carousel-wrapper">
     <div class="carousel" data-flickity>
+      {% for product in products  %}
       <div class="carousel-cell">
           <div class="card shadow-sm"> 
               <img src="sai.jpg" class="card-img-top" alt="...">     
             <div class="card-body">
-              <h5 class="card-title">Bhairav Narkhede</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <h5 class="card-title">{{product.product_name}}</h5>
+              <p class="card-text">{{product.product_desc}}</p>
               <div class="row">
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                  <a href="{% url 'Product_view' {{product.id}} %}" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
           </div>
       </div>
-      <div class="carousel-cell">
-          <div class="card shadow-sm"> 
-              <img src="sai.jpg" class="card-img-top" alt="...">     
-            <div class="card-body">
-              <h5 class="card-title">Bhairav Narkhede</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="row">
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-      </div>
-      <div class="carousel-cell">
-          <div class="card shadow-sm"> 
-              <img src="sai.jpg" class="card-img-top" alt="...">     
-            <div class="card-body">
-              <h5 class="card-title">Bhairav Narkhede</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="row">
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-      </div>
+      {% endfor %}
+      
     </div>
   </div>
 
