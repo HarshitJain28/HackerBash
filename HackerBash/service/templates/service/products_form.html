@@ -1,7 +1,9 @@
 {% extends "service/base_service.html" %}
 {% load crispy_forms_tags %}
 {% block body %}
-    <div class="content-section">
+<body style="background-color: rgb(10, 60, 66);">
+  <div class="container ">
+
         <form method='POST'>
             {% csrf_token %}
             <fieldset class="form-group">
@@ -13,5 +15,6 @@
             </div>
         </form>
     </div>
+</body>
 {% endblock body %}
     

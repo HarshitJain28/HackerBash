@@ -5,7 +5,7 @@ from .models import User, ServiceProvider
 
 
 class ServiceProviderSignUpForm(UserCreationForm):
-    first_name = forms.CharField()
+    first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
     phone_number = forms.CharField(required=True)
     email = forms.EmailField(required=True)
@@ -15,6 +15,7 @@ class ServiceProviderSignUpForm(UserCreationForm):
     city = forms.CharField(required=True)
     service_name = forms.CharField(required=True)
     company_name =  forms.CharField(required=True)
+    service_picture = forms.ImageField(required=False)
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -35,6 +36,7 @@ class ServiceProviderSignUpForm(UserCreationForm):
         serviceProvider = ServiceProvider.objects.create(user=user)
         serviceProvider.service_name = self.cleaned_data.get('service_name')
         serviceProvider.company_name = self.cleaned_data.get('company_name')
+        serviceProvider.service_picture = self.cleaned_data.get('Service_picture')
         serviceProvider.save()
         return user
         
@@ -48,9 +50,10 @@ class UserUpdateForm(forms.ModelForm):
     locality = forms.CharField()   
     state = forms.CharField() 
     city = forms.CharField()
+    service_picture = forms.ImageField()
 
     class Meta:
         model = ServiceProvider
-        fields = ['email', 'first_name','last_name','phone_number','address','locality','state','city']
+        fields = ['email', 'first_name','last_name','phone_number','address','locality','state','city','service_picture']
 
 

@@ -2,6 +2,7 @@ from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.contrib.auth.models import User
+from PIL import Image
 
 
 
@@ -35,10 +36,23 @@ class ServiceProvider(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key = True)
     service_name = models.CharField(max_length=100,default=' ')
     company_name = models.CharField(max_length=100,default='')
-    service_picture = models.ImageField(default='default.jpeg', upload_to='service_pics')
+    service_picture = models.ImageField(default='default.jpeg', upload_to='service_pics',null=True, blank=True)
 
     def __str__(self):
         return self.company_name
+    
+    def save(self):
+        super().save()
+        img = Image.open(self.service_picture.path)
+        if img.height > 300 or img.width > 300:
+            output_size=(300,300)
+            img.thumbnail(output_size)
+            img.save(self.service_picture.path)
+
+
+   
+
+		
 
 
 class Products(models.Model):
@@ -54,5 +68,7 @@ class Products(models.Model):
 
     def get_absolute_url(self):
         return reverse('Product_view',kwargs={'id':self.id})
+
+    
 
 

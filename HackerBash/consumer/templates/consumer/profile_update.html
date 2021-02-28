@@ -1,7 +1,9 @@
 {% extends "consumer/base_consumer.html" %}
 {% load crispy_forms_tags %}
 {% block body %}
-<div class="content-section">
+<body style="background-color: rgb(10, 60, 66);">
+  <div class="container ">
+  <div class="jumbotron" style="background-color: rgb(233, 233, 233);" >
     <form method='POST' enctype="multipart/form-data">
       {% csrf_token %}
       <fieldset class="form-group">
@@ -13,4 +15,7 @@
       </div>
   </form>
   </div>
+  </div>
+
+</body>
 {% endblock body %}
