@@ -41,6 +41,18 @@
             </div>
           </nav>
       </header>
+
+     <div class="col-md-8">
+	      {% if messages %}
+	      	{% for message in messages %}
+	      		<div class="alert alert-{{ message.tags }}">
+	      			{{ message }}
+	      		</div>
+	      	{% endfor %}
+	      {% endif %}
+	      
+	    </div>
+
     {% block body %}{% endblock body %}
     <script>{% block js %}{% endblock js %}</script>
     <!-- Optional JavaScript; choose one of the two! -->
