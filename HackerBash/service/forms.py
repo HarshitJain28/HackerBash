@@ -34,11 +34,23 @@ class ServiceProviderSignUpForm(UserCreationForm):
         user.save()
         serviceProvider = ServiceProvider.objects.create(user=user)
         serviceProvider.service_name = self.cleaned_data.get('service_name')
-        serviceProvider.comapany_name = self.cleaned_data.get('company_name')
+        serviceProvider.company_name = self.cleaned_data.get('company_name')
         serviceProvider.save()
         return user
         
 
+class UserUpdateForm(forms.ModelForm):
+    first_name = forms.CharField()
+    last_name = forms.CharField()
+    phone_number = forms.CharField()
+    email = forms.EmailField()
+    address = forms.CharField()
+    locality = forms.CharField()   
+    state = forms.CharField() 
+    city = forms.CharField()
 
+    class Meta:
+        model = ServiceProvider
+        fields = ['email', 'first_name','last_name','phone_number','address','locality','state','city']
 
 

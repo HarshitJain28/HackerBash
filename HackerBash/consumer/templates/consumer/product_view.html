@@ -1,13 +1,43 @@
-{% extends "consumer/base.html" %}
+{% extends "consumer/base_consumer.html" %}
+
+{% block style %}
+
+{% endblock style %}
 
 {% block body %}
-<div class="container my-3">
-             <h4> {{product.product_name}} </h4>
-             <h6> Rs.{{product.product_price}} </h6>
-             <hr>
-             <h5> Description: {{product.product_desc}} </h5> 
-             <p>  <br> Provider: {{product.product_distributer}} </p>
-
+<div class="container mt-5">
+	  <div class="jumbotron" style="max-height: 500px;">
+		  <div class="card mb-3" style="max-width: 1000px;">
+		  <div class="row g-0">
+		    <div class="col-md-4">
+		      <img
+		        src="cake.jpg"
+		        alt="..."
+		        class="img-fluid"
+		      />
+		    </div>
+		    <div class="col-md-8">
+		      <div class="card-body">
+		        <h5 class="card-title" style="">Product name: {{product.product_name}}</h5>
+		        <p class="card-text">
+		          <b>Product Description:</b> {{product.product_desc}}
+		        </p>
+		        <p class="card-text">
+		          <b>Service name:</b> {{product.product_distributer.service_name}}
+		          <br>
+		          <b>Company name:</b> {{product.product_distributer}}
+		        </p>
+		        </p>
+		        <p>
+		        	<b>Price:</b> &#8377 {{product.product_price}}
+		        </p>
+		        </p>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
 </div>
 
 {% endblock body %}
+  

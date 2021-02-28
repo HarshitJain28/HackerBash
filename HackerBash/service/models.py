@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.contrib.auth.models import User
@@ -37,7 +38,7 @@ class ServiceProvider(models.Model):
     service_picture = models.ImageField(default='default.jpeg', upload_to='service_pics')
 
     def __str__(self):
-        return self.user.username 
+        return self.company_name
 
 
 class Products(models.Model):
@@ -49,5 +50,9 @@ class Products(models.Model):
 
     def __str__(self):
         return self.product_name 
+
+
+    def get_absolute_url(self):
+        return reverse('Product_view',kwargs={'id':self.id})
 
 

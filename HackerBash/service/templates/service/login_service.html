@@ -1,4 +1,4 @@
-{% extends "consumer/base.html" %}
+{% extends "service/base_service.html" %}
 {% load crispy_forms_tags %}
 {% block body %}
     <div class="content-section">
@@ -13,7 +13,7 @@
             </div>
         </form>
         <div class="border-top pt-3">
-            <small class="text-muted">Don't Have An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up</a></small>
+            <small class="text-muted">Don't Have An Account? <a class="ml-2" href="{% url 'service-register' %}">Sign Up</a></small>
         </div>
     </div>
 {% endblock body %}

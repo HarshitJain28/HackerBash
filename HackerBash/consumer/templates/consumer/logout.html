@@ -1,0 +1,5 @@
+{% extends "consumer/base_consumer.html" %}
+{% block body %}
+    <h2>You Have Been Logged Out</h2>
+        <small class="text-muted"> <a class="ml-2" href="{% url 'consumer-login' %}">Login Again</a></small>
+{% endblock body %}

@@ -34,3 +34,18 @@ class ConsumerSignUpForm(UserCreationForm):
         consumer = Consumer.objects.create(user=user)
         consumer.save()
         return user
+
+
+class UserUpdateForm(forms.ModelForm):
+    first_name = forms.CharField()
+    last_name = forms.CharField()
+    phone_number = forms.CharField()
+    email = forms.EmailField()
+    address = forms.CharField()
+    locality = forms.CharField()   
+    state = forms.CharField() 
+    city = forms.CharField()
+    class Meta:
+        model = Consumer
+        fields = ['email', 'first_name','last_name','phone_number','address','locality','state','city']
+
