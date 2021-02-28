@@ -61,6 +61,7 @@ class Products(models.Model):
     product_desc = models.CharField(max_length=100,default=' ')
     product_price = models.IntegerField()
     product_distributer = models.ForeignKey(ServiceProvider, on_delete = models.CASCADE)
+    product_image= models.ImageField(default='default.jpeg', upload_to='product_pics',null=True, blank=True)
 
     def __str__(self):
         return self.product_name 
@@ -70,5 +71,11 @@ class Products(models.Model):
         return reverse('Product_view',kwargs={'id':self.id})
 
     
-
+    def save(self):
+        super().save()
+        img = Image.open(self.product_image.path)
+        if img.height > 300 or img.width > 300:
+            output_size=(300,300)
+            img.thumbnail(output_size)
+            img.save(self.product_image.path)
 

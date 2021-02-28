@@ -38,6 +38,7 @@ def consumer_register(request):
     return render(request, 'consumer/register.html', {'form': form})
 
 
+
 def login_request(request):
     if request.method=='POST':
         form = AuthenticationForm(data=request.POST)
@@ -47,7 +48,7 @@ def login_request(request):
             user = authenticate(username=username, password=password)
             if user is not None :
                 login(request,user)
-				messages.success(request, f'You are now logged in')
+                messages.success(request, f'You are now logged in')
                 return redirect('consumer-home')
             else:
                 messages.error(request,"Invalid username or password")
@@ -56,10 +57,9 @@ def login_request(request):
     return render(request, 'consumer/login.html',
     context={'form':AuthenticationForm()})
 
-
 def productView(request,id):
-		product = Products.objects.filter(id=id)
-		return render(request, 'consumer/product_view.html',{'product':product[0]})
+	product = Products.objects.filter(id=id)
+	return render(request, 'consumer/product_view.html',{'product':product[0]})
 
 
 @login_required
